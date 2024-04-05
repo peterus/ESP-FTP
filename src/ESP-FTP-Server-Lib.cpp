@@ -37,7 +37,7 @@ bool isNotConnected(const std::shared_ptr<FTPConnection> &con) {
 
 void FTPServer::handle() {
   if (_Server.hasClient()) {
-    std::shared_ptr<FTPConnection> connection = std::shared_ptr<FTPConnection>(new FTPConnection(_Server.available(), _UserList, _Filesystem));
+    std::shared_ptr<FTPConnection> connection = std::shared_ptr<FTPConnection>(new FTPConnection(_Server.accept(), _UserList, _Filesystem));
     _Connections.push_back(connection);
   }
   for (std::shared_ptr<FTPConnection> con : _Connections) {
